@@ -1,0 +1,20 @@
+* hodumi-theme
+
+tango-darkを元にしたEmacsのカラーテーマです。
+
+以下のpackageのfaceを追加予定です。
+- powerlinep
+
+** インストール方法
+
+適当なフォルダにhodumi-themeをcloneしてください。
+#+BEGIN_SRC shell
+cd ~/path/to/theme
+git clone https://github.com/hodumi/hodumi-theme.git
+#+END_SRC
+
+init.elに以下のプログラムを追記してください。
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'custom-theme-load-path "~/path/to/theme/hodumi-theme")
+(load-theme 'github)
+#+END_SRC
