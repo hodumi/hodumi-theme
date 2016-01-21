@@ -16,5 +16,5 @@ git clone https://github.com/hodumi/hodumi-theme.git
 init.elに以下のプログラムを追記してください。
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'custom-theme-load-path "~/path/to/theme/hodumi-theme")
-(load-theme 'github)
+(load-theme 'hodumi)
 #+END_SRC
