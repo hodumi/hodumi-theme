@@ -20,8 +20,9 @@
 ;;; Commentary
 
 ;; tango-darkを元にしたテーマです。
-;; 以下のpackageのfaceを追加予定です。
-;; - powerline
+;; tango-darkに以下のfaceを対応させました。
+;; - hl-line
+
 
 ;;; Code:
 
@@ -148,7 +149,10 @@ Semantic, and Ansi-Color faces are included.")
    `(semantic-decoration-on-unparsed-includes
      ((,class (:background ,alum-5.5))))
    `(semantic-tag-boundary-face ((,class (:overline ,blue-1))))
-   `(semantic-unmatched-syntax-face ((,class (:underline ,red-1)))))
+   `(semantic-unmatched-syntax-face ((,class (:underline ,red-1))))
+   ;;  hl-line
+   `(hl-line ((,class (:background ,alum-5.5))))
+   )
 
   (custom-theme-set-variables
    'hodumi

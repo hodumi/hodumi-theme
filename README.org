@@ -2,8 +2,8 @@
 
 tango-darkを元にしたEmacsのカラーテーマです。
 
-以下のpackageのfaceを追加予定です。
-- powerlinep
+tango-darkに以下のfaceを対応させました。
+- hl-line
 
 ** インストール方法
 
