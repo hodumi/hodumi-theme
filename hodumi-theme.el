@@ -152,12 +152,28 @@ Semantic, and Ansi-Color faces are included.")
    `(semantic-unmatched-syntax-face ((,class (:underline ,red-1))))
    ;;  hl-line
    `(hl-line ((,class (:background ,alum-5.5))))
+   ;; poserline
+   `(powerline-active1 ((,class (:box (:line-width -1 :style released-button) :background ,alum-5 :foreground ,alum-1))))
+   `(powerline-active2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-5.5 :foreground ,alum-1))))
+   `(powerline-inactive1 ((,class (:box (:line-width -1 :style released-button) :background ,alum-4 :foreground ,alum-1))))
+   `(powerline-inactive2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-4 :foreground ,alum-1))))
    )
 
   (custom-theme-set-variables
    'hodumi
    `(ansi-color-names-vector [,alum-7 ,red-0 ,cham-0 ,butter-1
-			      ,blue-1 ,plum-1 ,blue-0 ,alum-1])))
+			      ,blue-1 ,plum-1 ,blue-0 ,alum-1])
+   )
+
+  (defun initialize-hodumi-theme ()
+    (interactive)
+    (global-hl-line-mode)
+
+    (require 'powerline)
+    (powerline-default-theme)    
+    )
+  )
+
 
 (provide-theme 'hodumi)
 
