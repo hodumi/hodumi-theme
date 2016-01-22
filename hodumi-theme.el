@@ -151,10 +151,10 @@ Semantic, and Ansi-Color faces are included.")
    `(semantic-tag-boundary-face ((,class (:overline ,blue-1))))
    `(semantic-unmatched-syntax-face ((,class (:underline ,red-1))))
    ;;  hl-line
-   `(hl-line ((,class (:background ,alum-5.5))))
+   `(hl-line ((,class (:background ,alum-7))))
    ;; poserline
-   `(powerline-active1 ((,class (:box (:line-width -1 :style released-button) :background ,alum-5 :foreground ,alum-1))))
-   `(powerline-active2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-5.5 :foreground ,alum-1))))
+   `(powerline-active1 ((,class (:box (:line-width -1 :style released-button) :background ,alum-6 :foreground ,alum-1))))
+   `(powerline-active2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-7 :foreground ,alum-1))))
    `(powerline-inactive1 ((,class (:box (:line-width -1 :style released-button) :background ,alum-4 :foreground ,alum-1))))
    `(powerline-inactive2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-4 :foreground ,alum-1))))
    )
@@ -165,12 +165,35 @@ Semantic, and Ansi-Color faces are included.")
 			      ,blue-1 ,plum-1 ,blue-0 ,alum-1])
    )
 
+  (defun initialize-hodumi-theme-modeline-setting ()
+    ;; 時間表示フォーマット yyyy/m/dd(w) hh:mm:ss ms
+    (setq display-time-string-forms
+	  '((format "%s/%s/%s (%s) %s:%s" year month day dayname 24-hours minutes)
+	    load
+	    (if mail " Mail" "")))
+
+    ;; 時刻表示の左隣に日付を追加。
+    (setq display-time-kawakami-form t)
+
+    ;; 24時間制
+    (setq display-time-24hr-format t)
+
+    ;; 時間を表示
+    (display-time)
+
+    ;; カーソルのある行を強調
+    (global-hl-line-mode)
+    )
+  
+
+
   (defun initialize-hodumi-theme ()
     (interactive)
-    (global-hl-line-mode)
+
+    (initialize-hodumi-theme-modeline-setting)
 
     (require 'powerline)
-    (powerline-default-theme)    
+    ;; (powerline-default-theme)    
     )
   )
 
