@@ -23,4 +23,5 @@ init.elに以下のプログラムを追記してください。
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'custom-theme-load-path "~/path/to/theme/hodumi-theme")
 (load-theme 'hodumi)
+(initialize-hodumi-theme)
 #+END_SRC
