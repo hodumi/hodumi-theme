@@ -185,6 +185,10 @@ Semantic, and Ansi-Color faces are included.")
     (global-hl-line-mode)
     )
 
+  (defun initialize-hodumi-theme-powerline ()
+    (when (require 'powerline nil t)
+      (powerline-default-theme)
+      ))
 
 
   (defun initialize-hodumi-theme ()
@@ -192,9 +196,8 @@ Semantic, and Ansi-Color faces are included.")
     (add-to-list 'default-frame-alist '(alpha . (90 85))) ;; アクティブ時 90%  非アクティブ時 85%
 
     (initialize-hodumi-theme-modeline-setting)
-
-    (require 'powerline)
-    ;; (powerline-default-theme)    
+    (initialize-hodumi-theme-powerline)
+        
     )
   )
 
