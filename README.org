@@ -4,6 +4,11 @@ tango-darkを元にしたEmacsのカラーテーマです。
 
 tango-darkに以下のfaceを対応させました。
 - hl-line
+- powerline
+
+ 
+以下の設定を追加しました。
+- modelineに時間表示
 
 ** インストール方法
 

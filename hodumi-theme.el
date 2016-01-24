@@ -22,6 +22,10 @@
 ;; tango-darkを元にしたテーマです。
 ;; tango-darkに以下のfaceを対応させました。
 ;; - hl-line
+;; - powerline
+;; 
+;; 以下の設定を追加しました。
+;; - modelineに時間表示
 
 
 ;;; Code:
@@ -209,7 +213,3 @@ Semantic, and Ansi-Color faces are included.")
 ;; End:
 
 ;;; hodumi-theme.el ends here
-
-
-
-
