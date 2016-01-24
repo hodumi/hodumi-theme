@@ -26,7 +26,7 @@
 ;; 
 ;; 以下の設定を追加しました。
 ;; - modelineに時間表示
-
+;; - linumの表示(通常3桁)
 
 ;;; Code:
 
@@ -194,11 +194,19 @@ Semantic, and Ansi-Color faces are included.")
       (powerline-default-theme)
       ))
 
+  (defun initialize-hodumi-theme-linum ()
+    ;; 行番号表示
+    (global-linum-mode t)
+    
+    ;; 行番号フォーマット
+    (setq linum-format "%3d"))
 
   (defun initialize-hodumi-theme ()
     (interactive)
-    (add-to-list 'default-frame-alist '(alpha . (90 85))) ;; アクティブ時 90%  非アクティブ時 85%
 
+    (add-to-list 'default-frame-alist '(alpha . (90 85))) ;; アクティブ時 90%  非アクティブ時 85%
+    
+    (initialize-hodumi-theme-linum)
     (initialize-hodumi-theme-modeline-setting)
     (initialize-hodumi-theme-powerline)
         
