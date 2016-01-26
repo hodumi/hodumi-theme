@@ -27,6 +27,7 @@
 ;; 以下の設定を追加しました。
 ;; - modelineに時間表示
 ;; - linumの表示(通常3桁)
+;; - magit-dwimで常時空白の違いを非表示
 
 ;;; Code:
 
@@ -167,6 +168,7 @@ Semantic, and Ansi-Color faces are included.")
    'hodumi
    `(ansi-color-names-vector [,alum-7 ,red-0 ,cham-0 ,butter-1
 			      ,blue-1 ,plum-1 ,blue-0 ,alum-1])
+   '(magit-diff-arguments (quote ("--ignore-all-space" "--no-ext-diff" "--stat")))
    )
 
   (defun initialize-hodumi-theme-modeline-setting ()
