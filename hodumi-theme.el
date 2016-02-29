@@ -186,11 +186,7 @@ Semantic, and Ansi-Color faces are included.")
     (setq display-time-24hr-format t)
 
     ;; 時間を表示
-    (display-time)
-
-    ;; カーソルのある行を強調
-    (global-hl-line-mode)
-    )
+    (display-time))
 
   (defun initialize-hodumi-theme-powerline ()
     (when (require 'powerline nil t)
@@ -205,10 +201,20 @@ Semantic, and Ansi-Color faces are included.")
     (setq linum-format "%3d"))
 
   (defun initialize-hodumi-theme ()
+
     (interactive)
 
     (add-to-list 'default-frame-alist '(alpha . (90 85))) ;; アクティブ時 90%  非アクティブ時 85%
+
+    ;; eshell
+    (setq eshell-prompt-function
+	  (lambda ()
+	    (concat (eshell/pwd)
+		    (if (= (user-uid) 0) " # " " $ "))))
     
+    ;; カーソルのある行を強調
+    (global-hl-line-mode)
+
     (initialize-hodumi-theme-linum)
     (initialize-hodumi-theme-modeline-setting)
     (initialize-hodumi-theme-powerline)
