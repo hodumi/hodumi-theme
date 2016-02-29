@@ -168,7 +168,8 @@ Semantic, and Ansi-Color faces are included.")
    'hodumi
    `(ansi-color-names-vector [,alum-7 ,red-0 ,cham-0 ,butter-1
 			      ,blue-1 ,plum-1 ,blue-0 ,alum-1])
-   '(magit-diff-arguments (quote ("--ignore-all-space" "--no-ext-diff" "--stat")))
+   '(magit-diff-arguments  '("--ignore-all-space" "--no-ext-diff" "--stat"))
+   '(magit-log-arguments  '("--graph" "--color" "--decorate" "-n256"))
    )
 
   (defun initialize-hodumi-theme-modeline-setting ()
