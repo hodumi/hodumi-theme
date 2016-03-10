@@ -183,6 +183,7 @@ Semantic, and Ansi-Color faces are included.")
    `(ansi-color-names-vector [,alum-7 ,red-0 ,cham-0 ,butter-1
 				      ,blue-1 ,plum-1 ,blue-0 ,alum-1])
    '(magit-diff-arguments (quote ("--ignore-all-space" "--no-ext-diff" "--stat")))
+   '(magit-log-arguments  '("--graph" "--color" "--decorate" "-n256"))
    ))
 
 (defun initialize-hodumi-theme-modeline-setting ()
@@ -230,7 +231,7 @@ Semantic, and Ansi-Color faces are included.")
 	 "7 - July" "8 - August" "9 - September" "10 - October" "11 - November" "12 - December"])
   ;; 曜日
   (setq calendar-day-name-array
-      ["日(Sum)" "月(Mon)" "火(Tue)" "水(Wed)" "木(Thu)" "金(Fri)" "土(Sat)"])
+	["日(Sum)" "月(Mon)" "火(Tue)" "水(Wed)" "木(Thu)" "金(Fri)" "土(Sat)"])
   )
 
 (defun initialize-hodumi-theme ()
