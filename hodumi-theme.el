@@ -72,10 +72,10 @@ Semantic, and Ansi-Color faces are included.")
    ;; Mode line faces
    `(mode-line ((,class
 		 (:box (:line-width -1 :style released-button)
-		  :background ,alum-2 :foreground ,alum-6))))
+		       :background ,alum-2 :foreground ,alum-6))))
    `(mode-line-inactive ((,class
 			  (:box (:line-width -1 :style released-button)
-			   :background ,alum-5 :foreground ,alum-1))))
+				:background ,alum-5 :foreground ,alum-1))))
    `(compilation-mode-line-fail ((,class (:foreground ,red-3))))
    `(compilation-mode-line-run  ((,class (:foreground ,orange-3))))
    `(compilation-mode-line-exit ((,class (:foreground ,cham-3))))
@@ -162,58 +162,89 @@ Semantic, and Ansi-Color faces are included.")
    `(powerline-active2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-7 :foreground ,alum-1))))
    `(powerline-inactive1 ((,class (:box (:line-width -1 :style released-button) :background ,alum-4 :foreground ,alum-1))))
    `(powerline-inactive2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-4 :foreground ,alum-1))))
+   ;; calfw 
+   `(cfw:face-title ((,class (:foreground ,orange-1 :weight bold :height 2.0 :inherit variable-pitch))))
+
+   `(cfw:face-header ((,class (:foreground ,alum-2 :weight bold))))
+   `(cfw:face-sunday ((,class :b :foreground ,red-1 :weight bold)))
+   `(cfw:face-saturday ((,class :background "gray10" :foreground ,blue-1 :weight bold)))
+
+   `(cfw:face-holiday ((,class :background "gray10" :foreground ,red-2 :weight bold)))
+
+   `(cfw:face-toolbar ((,class (:foreground ,alum-4 :background ,blue-3))))
+   `(cfw:face-toolbar-button-off ((,class (:foreground ,alum-4 :background ,blue-3))))
+   `(cfw:face-toolbar-button-on ((,class (:foreground ,alum-1  :background ,blue-3))))
+
+   
    )
 
   (custom-theme-set-variables
    'hodumi
    `(ansi-color-names-vector [,alum-7 ,red-0 ,cham-0 ,butter-1
-			      ,blue-1 ,plum-1 ,blue-0 ,alum-1])
+				      ,blue-1 ,plum-1 ,blue-0 ,alum-1])
    '(magit-diff-arguments (quote ("--ignore-all-space" "--no-ext-diff" "--stat")))
-   )
+   ))
 
-  (defun initialize-hodumi-theme-modeline-setting ()
-    ;; 時間表示フォーマット yyyy/m/dd(w) hh:mm:ss ms
-    (setq display-time-string-forms
-	  '((format "%s/%s/%s (%s) %s:%s" year month day dayname 24-hours minutes)
-	    load
-	    (if mail " Mail" "")))
+(defun initialize-hodumi-theme-modeline-setting ()
+  ;; 時間表示フォーマット yyyy/m/dd(w) hh:mm:ss ms
+  (setq display-time-string-forms
+	'((format "%s/%s/%s (%s) %s:%s" year month day dayname 24-hours minutes)
+	  load
+	  (if mail " Mail" "")))
 
-    ;; 時刻表示の左隣に日付を追加。
-    (setq display-time-kawakami-form t)
+  ;; 時刻表示の左隣に日付を追加。
+  (setq display-time-kawakami-form t)
 
-    ;; 24時間制
-    (setq display-time-24hr-format t)
+  ;; 24時間制
+  (setq display-time-24hr-format t)
 
-    ;; 時間を表示
-    (display-time)
+  ;; 時間を表示
+  (display-time)
 
-    ;; カーソルのある行を強調
-    (global-hl-line-mode)
-    )
-
-  (defun initialize-hodumi-theme-powerline ()
-    (when (require 'powerline nil t)
-      (powerline-default-theme)
-      ))
-
-  (defun initialize-hodumi-theme-linum ()
-    ;; 行番号表示
-    (global-linum-mode t)
-    
-    ;; 行番号フォーマット
-    (setq linum-format "%3d"))
-
-  (defun initialize-hodumi-theme ()
-    (interactive)
-
-    (add-to-list 'default-frame-alist '(alpha . (90 85))) ;; アクティブ時 90%  非アクティブ時 85%
-    
-    (initialize-hodumi-theme-linum)
-    (initialize-hodumi-theme-modeline-setting)
-    (initialize-hodumi-theme-powerline)
-        
-    )
+  ;; カーソルのある行を強調
+  (global-hl-line-mode)
   )
+
+(defun initialize-hodumi-theme-powerline ()
+  (when (require 'powerline nil t)
+    (powerline-default-theme)
+    ))
+
+(defun initialize-hodumi-theme-linum ()
+  ;; 行番号表示
+  (global-linum-mode t)
+  
+  ;; 行番号フォーマット
+  (setq linum-format "%3d"))
+
+(defun initialize-hodumi-theme-calfw ()
+  (when (require 'japanese-holidays nil t)
+    (add-hook 'calendar-load-hook
+	      #'(lambda ()
+		  (setq calendar-holidays
+			(append japanese-holidays local-holidays other-holidays)))))
+
+  ;; 月
+  (setq calendar-month-name-array
+	["1 - January" "2 - February" "3 - March" "4 - April"   "5 - May" "6 - June"
+	 "7 - July" "8 - August" "9 - September" "10 - October" "11 - November" "12 - December"])
+  ;; 曜日
+  (setq calendar-day-name-array
+      ["日(Sum)" "月(Mon)" "火(Tue)" "水(Wed)" "木(Thu)" "金(Fri)" "土(Sat)"])
+  )
+
+(defun initialize-hodumi-theme ()
+  (interactive)
+
+  (add-to-list 'default-frame-alist '(alpha . (90 85))) ;; アクティブ時 90%  非アクティブ時 85%
+  
+  (initialize-hodumi-theme-linum)
+  (initialize-hodumi-theme-modeline-setting)
+  (initialize-hodumi-theme-powerline)
+  (initialize-hodumi-theme-calfw)
+  
+  )
+
 
 
 (provide-theme 'hodumi)
