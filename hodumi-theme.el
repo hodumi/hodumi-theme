@@ -220,7 +220,7 @@ Semantic, and Ansi-Color faces are included.")
 
 (defun initialize-hodumi-theme-calfw ()
   (when (require 'japanese-holidays nil t)
-    (setq calendar-holidays (append japanese-holidays local-holidays other-holidays))))
+    (setq calendar-holidays (append japanese-holidays local-holidays other-holidays)))
 
   ;; 月
   (setq calendar-month-name-array
@@ -228,8 +228,8 @@ Semantic, and Ansi-Color faces are included.")
 	 "7 - July" "8 - August" "9 - September" "10 - October" "11 - November" "12 - December"])
   ;; 曜日
   (setq calendar-day-name-array
-	["日(Sum)" "月(Mon)" "火(Tue)" "水(Wed)" "木(Thu)" "金(Fri)" "土(Sat)"])
-  )
+	["日(Sum)" "月(Mon)" "火(Tue)" "水(Wed)" "木(Thu)" "金(Fri)" "土(Sat)"]))
+  
 
 (defun initialize-hodumi-theme ()
   (interactive)
