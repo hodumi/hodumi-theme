@@ -220,7 +220,13 @@ Semantic, and Ansi-Color faces are included.")
 
 (defun initialize-hodumi-theme-calfw ()
   (when (require 'japanese-holidays nil t)
-    (setq calendar-holidays (append japanese-holidays local-holidays other-holidays)))
+
+
+    
+    (setq calendar-holidays (append japanese-holidays
+				    ;local-holidays
+				    ;other-holidays
+				    )))
 
   ;; 月
   (setq calendar-month-name-array
