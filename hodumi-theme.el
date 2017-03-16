@@ -174,8 +174,16 @@ Semantic, and Ansi-Color faces are included.")
    `(cfw:face-toolbar ((,class (:foreground ,alum-4 :background ,blue-3))))
    `(cfw:face-toolbar-button-off ((,class (:foreground ,alum-4 :background ,blue-3))))
    `(cfw:face-toolbar-button-on ((,class (:foreground ,alum-1  :background ,blue-3))))
+;; v
+   `(vhl/default-face ((,class (:foreground ,alum-4  ))))
+;; magit
+   `(magit-section-highlight ((,class (:background ,alum-7  ))))
 
-   
+;; autocomplete
+   `(ac-selection-face ((,class (:background "#555"  ))))
+   `(ac-candidate-face ((,class (:background "gray10"  ))))
+;;  col-hilight
+   `(col-highlight ((,class (:background ,alum-7))))
    )
 
   (custom-theme-set-variables
