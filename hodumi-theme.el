@@ -184,6 +184,9 @@ Semantic, and Ansi-Color faces are included.")
    `(ac-candidate-face ((,class (:background "gray10"  ))))
 ;;  col-hilight
    `(col-highlight ((,class (:background ,alum-7))))
+
+;;parent
+   `(show-paren-match ((nil (:background ,alum-5 :foreground ,alum-2))))
    )
 
   (custom-theme-set-variables
@@ -193,6 +196,11 @@ Semantic, and Ansi-Color faces are included.")
    '(magit-diff-arguments (quote ("--ignore-all-space" "--no-ext-diff" "--stat")))
    '(magit-log-arguments  '("--graph" "--color" "--decorate" "-n256"))
    '(beacon-color "black") ;; beacon
+
+   ;; parent
+   '(show-paren-style 'mixed)
+   '(show-paren-when-point-inside-paren t)
+   '(show-paren-when-point-in-periphery t)
    ))
 
 (defun initialize-hodumi-theme-modeline-setting ()
@@ -244,7 +252,10 @@ Semantic, and Ansi-Color faces are included.")
   ;; 曜日
   (setq calendar-day-name-array
 	["日(Sum)" "月(Mon)" "火(Tue)" "水(Wed)" "木(Thu)" "金(Fri)" "土(Sat)"]))
-  
+
+(defun initialize-hodumi-theme-paren ()
+  (when (require 'paren nil t)
+    (show-paren-mode)))
 
 (defun initialize-hodumi-theme ()
   (interactive)
@@ -255,7 +266,8 @@ Semantic, and Ansi-Color faces are included.")
   (initialize-hodumi-theme-modeline-setting)
   (initialize-hodumi-theme-powerline)
   (initialize-hodumi-theme-calfw)
-  
+  (initialize-hodumi-theme-paren)
+
   )
 
 
