@@ -186,9 +186,13 @@ Semantic, and Ansi-Color faces are included.")
    `(col-highlight ((,class (:background ,alum-7))))
 
 ;;parent
-   `(show-paren-match ((nil (:background ,alum-5 :foreground ,alum-2))))
+   `(show-paren-match ((,class (:background ,alum-4 :foreground ,alum-1))))
+
+;; web-mode
+   `(web-mode-current-element-highlight-face ((,class (:foreground ,alum-2  ))))
    )
 
+;;; ===  variables =========
   (custom-theme-set-variables
    'hodumi
    `(ansi-color-names-vector [,alum-7 ,red-0 ,cham-0 ,butter-1
@@ -201,6 +205,9 @@ Semantic, and Ansi-Color faces are included.")
    '(show-paren-style 'mixed)
    '(show-paren-when-point-inside-paren t)
    '(show-paren-when-point-in-periphery t)
+
+   ;; web-mode
+   '(web-mode-enable-current-element-highlight t)
    ))
 
 (defun initialize-hodumi-theme-modeline-setting ()
