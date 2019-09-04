@@ -143,6 +143,12 @@ Semantic, and Ansi-Color faces are included.")
    ;; Flyspell faces
    `(flyspell-duplicate ((,class (:underline ,orange-1))))
    `(flyspell-incorrect ((,class (:underline ,red-1))))
+;; tabbar
+   `(tabbar-default ((,class (:background ,alum-6 :foreground ,alum-3 ))))
+   `(tabbar-unselected ((,class (:background ,alum-6 :foreground ,alum-3 ))))
+   `(tabbar-selected ((,class (:background ,alum-2 :foreground ,alum-6 ))))
+   `(tabbar-separator ((,class (:background ,alum-6 :foreground ,alum-3 ))))
+   `(tabbar-button ((,class (:background ,alum-6 :foreground ,alum-3 ))))
    ;; Semantic faces
    `(semantic-decoration-on-includes ((,class (:underline ,alum-4))))
    `(semantic-decoration-on-private-members-face
