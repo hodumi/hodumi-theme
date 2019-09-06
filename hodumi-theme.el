@@ -162,11 +162,9 @@ Semantic, and Ansi-Color faces are included.")
    `(semantic-unmatched-syntax-face ((,class (:underline ,red-1))))
    ;;  hl-line
    `(hl-line ((,class (:background ,alum-7))))
-   ;; poserline
-   `(powerline-active1 ((,class (:box (:line-width -1 :style released-button) :background ,alum-6 :foreground ,alum-1))))
-   `(powerline-active2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-7 :foreground ,alum-1))))
-   `(powerline-inactive1 ((,class (:box (:line-width -1 :style released-button) :background ,alum-4 :foreground ,alum-1))))
-   `(powerline-inactive2 ((,class (:box (:line-width -1 :style released-button) :background ,alum-4 :foreground ,alum-1))))
+;; smart-mode-line
+   ;`(smart-mode-line-active ((,class (:box (:line-width -1 :style released-button) :background ,alum-6 :foreground ,alum-1))))
+
    ;; calfw 
    `(cfw:face-title ((,class (:foreground ,orange-1 :weight bold :height 2.0 :inherit variable-pitch))))
 
@@ -233,11 +231,35 @@ Semantic, and Ansi-Color faces are included.")
 
   ;; カーソルのある行を強調
   (global-hl-line-mode)
+
+  ;; ベルが鳴るとき(C-gやエラー時)に色を変更
+  (setq ring-bell-function
+	(lambda ()
+          (let ((orig-fg (face-background 'mode-line)))
+            (set-face-background 'mode-line "purple4")
+            (run-with-idle-timer 0.1 nil
+				 (lambda (fg) (set-face-background 'mode-line fg))
+				 orig-fg))))
+  ;; 保存時に色を変更
+  (add-hook 'after-save-hook
+	    (lambda ()
+	      (let ((orig-fg (face-background 'mode-line)))
+		(set-face-background 'mode-line "dark green")
+		(run-with-idle-timer 0.1 nil
+				     (lambda (fg) (set-face-background 'mode-line fg))
+				     orig-fg))))
   )
 
-(defun initialize-hodumi-theme-powerline ()
-  (when (require 'powerline nil t)
-    (powerline-default-theme)
+(defun initialize-hodumi-theme-smart-mode-line ()
+  (when (require 'smart-mode-line nil t)
+    
+    (setq sml/no-confirm-load-theme t)
+    (sml/setup)
+
+    (column-number-mode t) ;; 列番号の表示
+    (line-number-mode t) ;; 行番号の表示
+
+    
     ))
 
 (defun initialize-hodumi-theme-linum ()
@@ -276,7 +298,7 @@ Semantic, and Ansi-Color faces are included.")
   
   (initialize-hodumi-theme-linum)
   (initialize-hodumi-theme-modeline-setting)
-  (initialize-hodumi-theme-powerline)
+  (initialize-hodumi-theme-smart-mode-line)
   (initialize-hodumi-theme-calfw)
   (initialize-hodumi-theme-paren)
 
@@ -291,3 +313,4 @@ Semantic, and Ansi-Color faces are included.")
 ;; End:
 
 ;;; hodumi-theme.el ends here
+
